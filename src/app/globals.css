@@ -1,26 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700;1,6..96,900&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@1,400;1,700;1,900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-luxury-bg: #FFFFFF;
+  --color-luxury-bg-sec: #F8F8F8;
+  --color-luxury-text: #111111;
+  --color-luxury-text-sec: #666666;
+  --color-luxury-accent: #00E65C;
+  --color-luxury-border: #ECECEC;
+  
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --font-cormorant: var(--font-cormorant-garamond), serif;
+  --font-tempting: var(--font-bodoni-moda), var(--font-cormorant-garamond), var(--font-playfair), serif;
+  
+  --animate-spin-slow: spin 20s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base Styles & Luxury Customizations */
+html, body {
+  background-color: #FFFFFF;
+  color: #111111;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0E0E0;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00E65C;
+}
+
+/* Editorial Text Masks for Reveals */
+.text-reveal-mask {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.text-reveal-line {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+/* Fine Decorative lines */
+.luxury-line-h {
+  width: 100%;
+  height: 1px;
+  background: #ECECEC;
+  transform-origin: left;
+}
+
+.luxury-line-v {
+  width: 1px;
+  height: 100%;
+  background: #ECECEC;
+  transform-origin: top;
+}
+
+/* Glassmorphism Navigation */
+.nav-blur {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(236, 236, 236, 0.8);
+}
+
+/* Custom Cursor active states */
+@media (min-width: 1024px) {
+  .custom-cursor-active {
+    cursor: none;
+  }
+  .custom-cursor-active a,
+  .custom-cursor-active button,
+  .custom-cursor-active [role="button"] {
+    cursor: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth Scrolling Custom Tweaks */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
 }
