@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight, X, Bookmark, Heart, Share2, Send } from "lucide-react";
 import ScrollRevealHeading from "@/components/ScrollRevealHeading";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface ServiceItem {
   id: string;
@@ -17,6 +19,112 @@ interface ServiceItem {
   metaTypeface: string;
   metaPalette: string[];
 }
+
+const techStackLogos = [
+  {
+    name: "Next.js",
+    hoverClass: "hover:text-[#FFFFFF] dark:hover:text-[#FFFFFF] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]",
+    svg: (
+      <svg className="w-auto h-7 fill-current" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 0C26.86 0 0 26.86 0 60s26.86 60 60 60 60-26.86 60-60S93.14 0 60 0zm29.35 93.38L52.88 46.54v35.48h-7.64V38h7.64l33.4 42.66c-4.14 4.88-9.05 9.1-14.53 12.72zm5.72-9.3L87.4 74.46V38h7.67v46.08z" />
+      </svg>
+    )
+  },
+  {
+    name: "React",
+    hoverClass: "hover:text-[#61DAFB] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(97,218,251,0.3)]",
+    svg: (
+      <svg className="w-auto h-7 stroke-current fill-none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
+        <ellipse cx="50" cy="50" rx="38" ry="14" strokeWidth="3" />
+        <ellipse cx="50" cy="50" rx="38" ry="14" strokeWidth="3" transform="rotate(60 50 50)" />
+        <ellipse cx="50" cy="50" rx="38" ry="14" strokeWidth="3" transform="rotate(120 50 50)" />
+      </svg>
+    )
+  },
+  {
+    name: "TypeScript",
+    hoverClass: "hover:text-[#3178C6] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(49,120,198,0.3)]",
+    svg: (
+      <svg className="w-auto h-7 fill-current" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="8" />
+        <path d="M30 40h12v6h-4v28h-6v-28h-4zM54 58c2 4 5 6 10 6 4 0 6-2 6-5 0-8-15-5-15-16 0-6 5-11 12-11 7 0 11 3 13 8l-5 3c-1.5-3-4-5-8-5-3 0-5 2-5 4 0 7 15 4 15 16 0 7-5 12-13 12-7 0-12-4-14-9z" fill="#F8F8F8" />
+      </svg>
+    )
+  },
+  {
+    name: "Tailwind",
+    hoverClass: "hover:text-[#38BDF8] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]",
+    svg: (
+      <svg className="w-auto h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 14.881 12 18 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 15.121 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.392 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 9.121 12 6.001 12z" />
+      </svg>
+    )
+  },
+  {
+    name: "GSAP",
+    hoverClass: "hover:text-[#00E65C] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(0,230,92,0.3)]",
+    svg: (
+      <svg className="w-auto h-6 fill-current" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="28" className="font-sans font-extrabold text-[28px] tracking-tight leading-none">GSAP</text>
+        <circle cx="85" cy="20" r="4" fill="currentColor" />
+        <circle cx="100" cy="20" r="6" fill="currentColor" />
+        <circle cx="115" cy="20" r="4" fill="currentColor" />
+      </svg>
+    )
+  },
+  {
+    name: "Motion",
+    hoverClass: "hover:text-[#F107A3] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(241,7,163,0.3)]",
+    svg: (
+      <svg className="w-auto h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v8H12zM0 8h12l12 8H0zm0 8h24v8L12 16z" />
+      </svg>
+    )
+  },
+  {
+    name: "Node.js",
+    hoverClass: "hover:text-[#339933] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(51,153,51,0.3)]",
+    svg: (
+      <svg className="w-auto h-7 fill-current" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 3L11 25v45l39 22 39-22V25L50 3zm29 62L50 82 21 65V35l29-17 29 17v30zM50 26L28 38v24l22 12v-12l-12-7V43l12 7V26z" />
+      </svg>
+    )
+  },
+  {
+    name: "GraphQL",
+    hoverClass: "hover:text-[#E10098] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(225,0,152,0.3)]",
+    svg: (
+      <svg className="w-auto h-7 fill-current" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 3.2L7.3 27.8v49.2L50 96.8l42.7-24.8V27.8L50 3.2zm37.7 26.8v44.8L50 90.6l-37.7-22V30L50 8.2l37.7 21.8z" />
+        <circle cx="50" cy="8.2" r="5" fill="currentColor" />
+        <circle cx="92.7" cy="32.8" r="5" fill="currentColor" />
+        <circle cx="92.7" cy="72.2" r="5" fill="currentColor" />
+        <circle cx="50" cy="90.6" r="5" fill="currentColor" />
+        <circle cx="7.3" cy="72.2" r="5" fill="currentColor" />
+        <circle cx="7.3" cy="32.8" r="5" fill="currentColor" />
+      </svg>
+    )
+  },
+  {
+    name: "Stripe",
+    hoverClass: "hover:text-[#635BFF] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(99,91,255,0.3)]",
+    svg: (
+      <svg className="w-auto h-6 fill-current" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="28" className="font-sans font-black text-[30px] tracking-tight italic">stripe</text>
+      </svg>
+    )
+  },
+  {
+    name: "Figma",
+    hoverClass: "hover:text-[#F24E1E] [&>svg]:hover:drop-shadow-[0_0_15px_rgba(242,78,30,0.3)]",
+    svg: (
+      <svg className="w-auto h-7 fill-current" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 0a25 25 0 0 0 0 50h25V0H25zm50 0a25 25 0 0 0-25 25v25h25a25 25 0 0 0 0-50zM25 50a25 25 0 0 0 0 50h25V50H25zm50 0a25 25 0 0 0-25 25v25h25a25 25 0 0 0 0-50zM25 100a25 25 0 0 0 0 50c13.8 0 25-11.2 25-25v-25H25z" />
+      </svg>
+    )
+  }
+];
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -72,12 +180,40 @@ export default function Services() {
     },
   ];
 
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelectedService(null);
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+
+    // Register ScrollTrigger and animate marquee on scroll
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      if (marqueeRef.current) {
+        gsap.fromTo(
+          marqueeRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: marqueeRef.current,
+              start: "top 92%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    }, marqueeRef);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -126,6 +262,44 @@ export default function Services() {
               index={idx} 
               onClick={() => setSelectedService(service)}
             />
+          ))}
+        </div>
+      </div>
+
+      {/* Tech Stack Marquee Section */}
+      <div 
+        ref={marqueeRef}
+        className="relative w-full overflow-hidden py-10 border-t border-b border-[#ECECEC]/70 mt-20 select-none opacity-0"
+      >
+        {/* Faded Edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-r from-[#F8F8F8] to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-[#F8F8F8] to-transparent" />
+        
+        <div className="flex gap-16 items-center w-max animate-marquee">
+          {techStackLogos.map((tech, i) => (
+            <div 
+              key={i} 
+              className={`flex items-center gap-3 text-neutral-400/70 transition-all duration-500 hover:scale-105 cursor-pointer ${tech.hoverClass}`}
+              title={tech.name}
+            >
+              {tech.svg}
+              <span className="text-[10px] font-mono tracking-[0.25em] uppercase font-bold text-neutral-500 hover:text-inherit transition-colors duration-500">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+          {/* Duplicated for infinite scroll */}
+          {techStackLogos.map((tech, i) => (
+            <div 
+              key={`dup-${i}`} 
+              className={`flex items-center gap-3 text-neutral-400/70 transition-all duration-500 hover:scale-105 cursor-pointer ${tech.hoverClass}`}
+              title={tech.name}
+            >
+              {tech.svg}
+              <span className="text-[10px] font-mono tracking-[0.25em] uppercase font-bold text-neutral-500 hover:text-inherit transition-colors duration-500">
+                {tech.name}
+              </span>
+            </div>
           ))}
         </div>
       </div>
