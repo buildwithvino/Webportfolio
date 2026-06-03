@@ -482,6 +482,10 @@ function WebDevAbstractSVG({ isHovered }: { isHovered: boolean }) {
         x="36"
         y="32"
         rx="3"
+        width={28}
+        fillOpacity={0.08}
+        strokeOpacity={0.4}
+        initial={false}
         animate={{
           width: isHovered ? 48 : 28,
           x: isHovered ? 26 : 36,
@@ -513,6 +517,8 @@ function WebDevAbstractSVG({ isHovered }: { isHovered: boolean }) {
         cy="48" 
         r={isHovered ? 3.5 : 2} 
         fill="#00E65C"
+        fillOpacity={0.7}
+        initial={false}
         animate={{ fillOpacity: isHovered ? [0.4, 1, 0.4] : 0.7 }}
         transition={{ repeat: Infinity, duration: 2 }}
       />
@@ -625,6 +631,7 @@ function SaaSAbstractSVG({ isHovered }: { isHovered: boolean }) {
             y1={75}
             x2={18 + i * 9}
             y2={75 - h}
+            initial={false}
             animate={{
               y2: isHovered 
                 ? [75 - h, 75 - h * 1.3, 75 - h * 0.7, 75 - h] 
@@ -644,6 +651,8 @@ function SaaSAbstractSVG({ isHovered }: { isHovered: boolean }) {
           {/* Telemetry nodes at tips */}
           <motion.circle
             cx={18 + i * 9}
+            cy={75 - h}
+            initial={false}
             animate={{
               cy: isHovered 
                 ? [75 - h, 75 - h * 1.3, 75 - h * 0.7, 75 - h] 
