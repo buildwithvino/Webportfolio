@@ -657,7 +657,7 @@ function ServiceDetailsShowcase({ service, onClose }: { service: ServiceItem; on
 
         {/* Right Column: Fanned Cards Stack & Glassmorphic Tab Folder (Centerpiece Reference 1) */}
         <div className="lg:col-span-6 flex justify-center items-center w-full relative overflow-visible pt-10 lg:pt-0">
-          <div className="relative w-full max-w-[380px] h-[340px] md:h-[380px] flex items-center justify-center overflow-visible">
+          <div className="relative w-full max-w-[380px] h-[340px] md:h-[380px] flex items-center justify-center overflow-visible scale-75 sm:scale-90 md:scale-100 origin-center">
             
             {/* 1. BACK FANNED STACK CARDS */}
             {/* Card 1: Back-Left */}

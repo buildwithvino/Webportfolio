@@ -142,11 +142,11 @@ export default function Hero() {
 
       {/* Top Left/Right Micro-Typography (System Coordinates & Status) */}
       <div ref={microLabelsRef} className="absolute inset-x-8 top-28 md:top-32 flex justify-between pointer-events-none z-30">
-        <div className="micro-anim hidden md:flex flex-col gap-1 font-mono text-[9px] text-white/30 tracking-widest">
+        <div className="micro-anim hidden md:flex flex-col gap-1 font-mono text-[9px] text-white/30 tracking-widest opacity-0">
           <span>SYS.LOC // BLR_GRID_01</span>
           <span>COORD // 12.9716° N, 77.5946° E</span>
         </div>
-        <div className="micro-anim hidden md:flex items-center gap-2 font-mono text-[9px] text-white/30 tracking-widest">
+        <div className="micro-anim hidden md:flex items-center gap-2 font-mono text-[9px] text-white/30 tracking-widest opacity-0">
           <span>STATUS: ONLINE</span>
           <span className="w-1 h-1 rounded-full bg-[#00E65C] inline-block animate-pulse" />
         </div>
@@ -164,7 +164,7 @@ export default function Hero() {
               <div className="overflow-hidden py-2 px-2">
                 <span
                   ref={textPortRef}
-                  className="font-tempting italic font-light text-[22vw] md:text-[15vw] leading-none tracking-tight bg-gradient-to-b from-[#FFFFFF] via-[#E5E5E5] to-[#A3A3A3] bg-clip-text text-transparent transform-gpu inline-block"
+                  className="font-tempting italic font-light text-[22vw] md:text-[15vw] leading-none tracking-tight bg-gradient-to-b from-[#FFFFFF] via-[#E5E5E5] to-[#A3A3A3] bg-clip-text text-transparent transform-gpu inline-block opacity-0"
                 >
                   Port
                 </span>
@@ -183,7 +183,7 @@ export default function Hero() {
               }}
             >
               <div className="parallax-f transform-gpu origin-bottom">
-                <div ref={fRef}>f</div>
+                <div ref={fRef} className="opacity-0">f</div>
               </div>
             </div>
 
@@ -193,7 +193,7 @@ export default function Hero() {
                 <div className="overflow-hidden py-2 px-2">
                   <span
                     ref={textFolioRef}
-                    className="font-sans font-extrabold text-[19vw] md:text-[13vw] leading-none tracking-tighter bg-gradient-to-b from-[#CCCCCC] via-[#999999] to-[#737373] bg-clip-text text-transparent transform-gpu inline-block -skew-x-[12deg] lowercase"
+                    className="font-sans font-extrabold text-[19vw] md:text-[13vw] leading-none tracking-tighter bg-gradient-to-b from-[#CCCCCC] via-[#999999] to-[#737373] bg-clip-text text-transparent transform-gpu inline-block -skew-x-[12deg] lowercase opacity-0"
                   >
                     olio
                   </span>
@@ -206,7 +206,7 @@ export default function Hero() {
         </div>
 
         {/* Elegant Editorial Subtitle / Communication hook */}
-        <div ref={subtitleRef} className="mt-12 md:mt-16 flex flex-col items-center gap-4 text-center max-w-lg z-30 pointer-events-none">
+        <div ref={subtitleRef} className="mt-12 md:mt-16 flex flex-col items-center gap-4 text-center max-w-lg z-30 pointer-events-none opacity-0">
           <span className="font-mono text-[9px] md:text-[10px] text-[#00E65C] tracking-[0.35em] uppercase font-bold">
             Digital Product Architect
           </span>

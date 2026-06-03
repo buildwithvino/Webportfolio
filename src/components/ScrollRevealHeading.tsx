@@ -68,7 +68,7 @@ export default function ScrollRevealHeading({
           {word.split("").map((char, cIdx) => (
             <span
               key={cIdx}
-              className="reveal-char inline-block origin-bottom-left transform-gpu"
+              className="reveal-char inline-block origin-bottom-left transform-gpu opacity-0"
               style={{ display: "inline-block" }}
             >
               {char}

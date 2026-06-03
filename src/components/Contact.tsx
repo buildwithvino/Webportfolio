@@ -130,21 +130,21 @@ export default function Contact() {
                 {/* Word: LET'S */}
                 <span className="inline-flex overflow-hidden py-1">
                   {"LET'S".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu">{c}</span>
+                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
                   ))}
                 </span>
 
                 {/* Word: BUILD */}
                 <span className="inline-flex overflow-hidden py-1">
                   {"BUILD".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu">{c}</span>
+                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
                   ))}
                 </span>
 
                 {/* Word: SOMETHING */}
                 <span className="inline-flex overflow-hidden py-1">
                   {"SOMETHING".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu">{c}</span>
+                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
                   ))}
                 </span>
 
@@ -153,14 +153,14 @@ export default function Contact() {
                 {/* Word: exceptional (green, italic serif lowercase) */}
                 <span className="font-serif italic font-light text-[#00E65C] lowercase inline-flex overflow-hidden py-1">
                   {"exceptional".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu text-[#00E65C] font-serif lowercase italic">{c}</span>
+                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu text-[#00E65C] font-serif lowercase italic opacity-0">{c}</span>
                   ))}
                 </span>
 
                 {/* Word: TOGETHER. */}
                 <span className="inline-flex overflow-hidden py-1">
                   {"TOGETHER.".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu">{c}</span>
+                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
                   ))}
                 </span>
               </h1>
