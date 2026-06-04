@@ -2,15 +2,18 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import CustomCursor from "@/components/CustomCursor";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import WorkShowcase from "@/components/WorkShowcase";
-import Services from "@/components/Services";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Contact from "@/components/Contact";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Dynamically import components below the fold and client-only elements to reduce initial JS execution blocking time (TBT)
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
+const WorkShowcase = dynamic(() => import("@/components/WorkShowcase"), { ssr: true });
+const Services = dynamic(() => import("@/components/Services"), { ssr: true });
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"), { ssr: true });
+const Contact = dynamic(() => import("@/components/Contact"), { ssr: true });
 
 export default function Home() {
   useEffect(() => {
