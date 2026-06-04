@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "OeNGxdZiXYmAMstiNF_kApgctYubaf6PX4rl0YcDsvw",
+  },
   title: "Vinoth M — Premium Digital Architect & Developer",
   description: "Award-winning personal portfolio of Vinoth M, crafting premium digital experiences and luxury product designs with Next.js, Tailwind, GSAP, and Framer Motion.",
   keywords: ["Vinoth M", "Full Stack Developer", "Digital Product Builder", "Portfolio", "Luxury Web Design", "Next.js Developer", "GSAP Portfolio"],
