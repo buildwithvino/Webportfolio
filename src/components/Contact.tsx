@@ -123,47 +123,51 @@ export default function Contact() {
               <span className="text-[10px] font-bold tracking-widest text-[#666666] uppercase block">
                 NEXT STEPS / INITIATE CONVERSATION
               </span>
-              <h1
+              <h2
                 ref={headingRef}
+                aria-label="LET'S BUILD SOMETHING exceptional TOGETHER."
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter text-[#111111] uppercase leading-[0.95] font-sans flex flex-wrap gap-x-[0.25em] gap-y-[0.1em] overflow-visible select-none text-left"
               >
-                {/* Word: LET'S */}
-                <span className="inline-flex overflow-hidden py-1">
-                  {"LET'S".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
-                  ))}
-                </span>
+                <span className="sr-only">LET'S BUILD SOMETHING exceptional TOGETHER.</span>
+                <span aria-hidden="true" className="flex flex-wrap gap-x-[0.25em] gap-y-[0.1em] overflow-visible">
+                  {/* Word: LET'S */}
+                  <span className="inline-flex overflow-hidden py-1">
+                    {"LET'S".split("").map((c, i) => (
+                      <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
+                    ))}
+                  </span>
 
-                {/* Word: BUILD */}
-                <span className="inline-flex overflow-hidden py-1">
-                  {"BUILD".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
-                  ))}
-                </span>
+                  {/* Word: BUILD */}
+                  <span className="inline-flex overflow-hidden py-1">
+                    {"BUILD".split("").map((c, i) => (
+                      <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
+                    ))}
+                  </span>
 
-                {/* Word: SOMETHING */}
-                <span className="inline-flex overflow-hidden py-1">
-                  {"SOMETHING".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
-                  ))}
-                </span>
+                  {/* Word: SOMETHING */}
+                  <span className="inline-flex overflow-hidden py-1">
+                    {"SOMETHING".split("").map((c, i) => (
+                      <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
+                    ))}
+                  </span>
 
-                <br className="hidden sm:inline w-full" />
+                  <br className="hidden sm:inline w-full" />
 
-                {/* Word: exceptional (green, italic serif lowercase) */}
-                <span className="font-serif italic font-light text-[#00E65C] lowercase inline-flex overflow-hidden py-1">
-                  {"exceptional".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu text-[#00E65C] font-serif lowercase italic opacity-0">{c}</span>
-                  ))}
-                </span>
+                  {/* Word: exceptional (green, italic serif lowercase) */}
+                  <span className="font-serif italic font-light text-[#00E65C] lowercase inline-flex overflow-hidden py-1">
+                    {"exceptional".split("").map((c, i) => (
+                      <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu text-[#00E65C] font-serif lowercase italic opacity-0">{c}</span>
+                    ))}
+                  </span>
 
-                {/* Word: TOGETHER. */}
-                <span className="inline-flex overflow-hidden py-1">
-                  {"TOGETHER.".split("").map((c, i) => (
-                    <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
-                  ))}
+                  {/* Word: TOGETHER. */}
+                  <span className="inline-flex overflow-hidden py-1">
+                    {"TOGETHER.".split("").map((c, i) => (
+                      <span key={i} className="contact-reveal-char inline-block origin-bottom-left transform-gpu opacity-0">{c}</span>
+                    ))}
+                  </span>
                 </span>
-              </h1>
+              </h2>
             </div>
 
             {/* A single clean high-impact sub-headline status instead of a long paragraph */}

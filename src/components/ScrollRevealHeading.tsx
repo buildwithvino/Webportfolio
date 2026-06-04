@@ -62,20 +62,24 @@ export default function ScrollRevealHeading({
     <Tag
       ref={containerRef}
       className={`${className} flex flex-wrap gap-x-[0.22em] overflow-visible`}
+      aria-label={text}
     >
-      {words.map((word, wIdx) => (
-        <span key={wIdx} className="inline-flex overflow-hidden py-1 select-none">
-          {word.split("").map((char, cIdx) => (
-            <span
-              key={cIdx}
-              className="reveal-char inline-block origin-bottom-left transform-gpu opacity-0"
-              style={{ display: "inline-block" }}
-            >
-              {char}
-            </span>
-          ))}
-        </span>
-      ))}
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true" className="flex flex-wrap gap-x-[0.22em] overflow-visible">
+        {words.map((word, wIdx) => (
+          <span key={wIdx} className="inline-flex overflow-hidden py-1 select-none">
+            {word.split("").map((char, cIdx) => (
+              <span
+                key={cIdx}
+                className="reveal-char inline-block origin-bottom-left transform-gpu opacity-0"
+                style={{ display: "inline-block" }}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+        ))}
+      </span>
     </Tag>
   );
 }

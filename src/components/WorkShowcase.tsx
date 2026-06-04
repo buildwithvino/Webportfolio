@@ -6,6 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollRevealHeading from "@/components/ScrollRevealHeading";
+import Image from "next/image";
 
 interface Project {
   id: string;
@@ -342,11 +343,13 @@ function ProjectVisual({
         onMouseEnter={() => setIsRowHovered(true)}
         onMouseLeave={() => setIsRowHovered(false)}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img 
+        <Image 
           src={`/images/${project.id}.png`} 
-          alt={project.name}
-          className={`w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isRowHovered ? 'scale-[1.03]' : 'scale-100'}`}
+          alt={`${project.name} - ${project.category}`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority={project.id === "ideovate"}
+          className={`object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isRowHovered ? 'scale-[1.03]' : 'scale-100'}`}
         />
       </div>
     );

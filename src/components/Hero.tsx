@@ -154,10 +154,11 @@ export default function Hero() {
 
       {/* Symmetrical Typographic Centerpiece Layout */}
       <div className="flex flex-col items-center justify-center relative w-full z-10 max-w-[1200px] 2xl:max-w-[1600px] px-6">
+        <h1 className="sr-only">Vinoth M — Premium Digital Architect & Developer</h1>
 
         {/* Relative wrapper for Port + folio */}
-        <div className="relative w-full flex flex-col items-center justify-center py-4 overflow-visible">
-
+        <div aria-hidden="true" className="relative w-full flex flex-col items-center justify-center py-4 overflow-visible">
+          
           {/* Top Line "Port" */}
           <div className="relative flex items-center -translate-x-[18vw] md:-translate-x-[12vw] py-4 px-8 overflow-visible">
             <div className="parallax-port transform-gpu">
@@ -211,7 +212,7 @@ export default function Hero() {
             Digital Product Architect
           </span>
           <p className="font-sans text-[11px] md:text-[13px] text-white/50 tracking-[0.2em] uppercase leading-relaxed max-w-sm md:max-w-md">
-
+            Crafting premium digital experiences and luxury product designs with absolute precision.
           </p>
         </div>
 

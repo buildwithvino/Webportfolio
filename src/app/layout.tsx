@@ -34,6 +34,10 @@ const bodoni = Bodoni_Moda({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vinothdeveloper.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Vinoth M — Premium Digital Architect & Developer",
   description: "Award-winning personal portfolio of Vinoth M, crafting premium digital experiences and luxury product designs with Next.js, Tailwind, GSAP, and Framer Motion.",
   keywords: ["Vinoth M", "Full Stack Developer", "Digital Product Builder", "Portfolio", "Luxury Web Design", "Next.js Developer", "GSAP Portfolio"],
@@ -42,12 +46,89 @@ export const metadata: Metadata = {
     title: "Vinoth M — Premium Digital Architect & Developer",
     description: "Personal portfolio of Vinoth M, showcasing state-of-the-art web products and exceptional design systems.",
     type: "website",
+    url: "https://vinothdeveloper.vercel.app",
+    siteName: "Vinoth M Portfolio",
+    images: [
+      {
+        url: "/images/webdev_3d.png",
+        width: 1200,
+        height: 630,
+        alt: "Vinoth M — Premium Digital Architect & Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vinoth M — Premium Digital Architect & Developer",
     description: "Personal portfolio of Vinoth M, showcasing state-of-the-art web products and exceptional design systems.",
+    images: ["/images/webdev_3d.png"],
   },
+};
+
+const schemaJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://vinothdeveloper.vercel.app/#person",
+      "name": "Vinoth M",
+      "jobTitle": "Digital Product Architect & Full Stack Developer",
+      "description": "Premium Digital Architect & Developer crafting premium digital experiences and luxury product designs with Next.js, Tailwind, GSAP, and Framer Motion.",
+      "url": "https://vinothdeveloper.vercel.app",
+      "sameAs": [
+        "https://github.com",
+        "https://linkedin.com"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vinothdeveloper.vercel.app/#website",
+      "url": "https://vinothdeveloper.vercel.app",
+      "name": "Vinoth M",
+      "publisher": {
+        "@id": "https://vinothdeveloper.vercel.app/#person"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vinothdeveloper.vercel.app/#webpage",
+      "url": "https://vinothdeveloper.vercel.app",
+      "name": "Vinoth M — Premium Digital Architect & Developer",
+      "isPartOf": {
+        "@id": "https://vinothdeveloper.vercel.app/#website"
+      },
+      "about": {
+        "@id": "https://vinothdeveloper.vercel.app/#person"
+      },
+      "description": "Award-winning personal portfolio of Vinoth M, crafting premium digital experiences and luxury product designs with Next.js, Tailwind, GSAP, and Framer Motion."
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://vinothdeveloper.vercel.app/#service",
+      "name": "Vinoth M Digital Architect",
+      "image": "https://vinothdeveloper.vercel.app/images/webdev_3d.png",
+      "priceRange": "$$$$",
+      "telephone": "",
+      "url": "https://vinothdeveloper.vercel.app",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.9716,
+        "longitude": 77.5946
+      }
+    }
+  ]
 };
 
 export default function RootLayout({
@@ -61,6 +142,10 @@ export default function RootLayout({
       className={`${outfit.variable} ${playfair.variable} ${cormorant.variable} ${bodoni.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full bg-white text-[#111111] font-sans overflow-x-hidden selection:bg-[#00E65C] selection:text-[#111111]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
+        />
         {children}
       </body>
     </html>

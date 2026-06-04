@@ -1,0 +1,14 @@
+# Vinoth M — Premium Digital Architect & Developer
+> Personal portfolio of Vinoth M, showcasing state-of-the-art web products and exceptional design systems.
+
+## Primary Sections
+- [Home](https://vinothdeveloper.vercel.app/#home): Dynamic Hero page presenting Vinoth M's role as a Digital Product Architect based in Bangalore.
+- [Work](https://vinothdeveloper.vercel.app/#work): High-fidelity showcase of premium client platforms including Ideovate, KSquare Demo, Madhu Fitness, and Trinity Interiors.
+- [Services](https://vinothdeveloper.vercel.app/#services): Core capabilities spanning High-End Web Development, Intelligent AI Integrations, Premium SaaS Development, and Luxury UI/UX Design.
+- [Why Us](https://vinothdeveloper.vercel.app/#why-us): Performance audits and comparative analytics showing speed, retention, and custom design benefits.
+- [Contact](https://vinothdeveloper.vercel.app/#contact): Secured submission portal and networking options.
+
+## Core Technical Specs
+- **Location Context:** Bangalore, Karnataka, India (Latitude: 12.9716° N, Longitude: 77.5946° E)
+- **Primary Tech Stack:** Next.js (React 19), TypeScript, Tailwind CSS, GSAP, Framer Motion, Lenis Scroll.
+- **Audits & Metrics:** Core Web Vitals optimized for sub-0.4s LCP, 0.00 CLS, and 100/100 performance profiles.
