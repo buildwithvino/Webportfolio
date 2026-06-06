@@ -3,7 +3,7 @@
 
 ## Primary Sections
 - [Home](https://vinothdeveloper.vercel.app/#home): Dynamic Hero page presenting Vinoth M's role as a Digital Product Architect based in Bangalore.
-- [Work](https://vinothdeveloper.vercel.app/#work): High-fidelity showcase of premium client platforms including Ideovate, KSquare Demo, Madhu Fitness, and Trinity Interiors.
+- [Work](https://vinothdeveloper.vercel.app/#work): High-fidelity showcase of premium client platforms including Ideovate, KSquare Demo, Apex Marketing, and Trinity Interiors.
 - [Services](https://vinothdeveloper.vercel.app/#services): Core capabilities spanning High-End Web Development, Intelligent AI Integrations, Premium SaaS Development, and Luxury UI/UX Design.
 - [Why Us](https://vinothdeveloper.vercel.app/#why-us): Performance audits and comparative analytics showing speed, retention, and custom design benefits.
 - [Contact](https://vinothdeveloper.vercel.app/#contact): Secured submission portal and networking options.

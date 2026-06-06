@@ -22,6 +22,16 @@ interface Project {
 export default function WorkShowcase() {
   const projects: Project[] = [
     {
+      id: "apexmarketing",
+      name: "Apex Marketing",
+      category: "Performance Marketing Platform",
+      year: "2025",
+      description: "A high-performance marketing and client acquisition engine built to scale conversion pipelines. Leverages interactive analytics dashboards, real-time lead telemetry, automated campaign funnels, and an SEO-optimized landing architecture.",
+      tech: ["Next.js", "Tailwind CSS", "GSAP ScrollTrigger", "Framer Motion", "Conversion API"],
+      color: "bg-[#FFFFFF] border-[#ECECEC]",
+      url: "https://catalistemliswebflowio.vercel.app/",
+    },
+    {
       id: "ideovate",
       name: "Ideovate",
       category: "Digital Agency Platform",
@@ -40,16 +50,6 @@ export default function WorkShowcase() {
       tech: ["React", "TypeScript", "Tailwind CSS", "Interactive Canvas", "REST API"],
       color: "bg-[#0A0D0F] border-neutral-900",
       url: "https://ksquaredemo.vercel.app/",
-    },
-    {
-      id: "madhufitness",
-      name: "Madhu Fitness",
-      category: "Health & Fitness Platform",
-      year: "2025",
-      description: "An immersive fitness catalog engineered for personal trainers and boutique gyms. Features rapid page loads, high-fidelity gallery overlays, buttery horizontal transitions, and an optimized client onboarding layout.",
-      tech: ["Next.js", "Tailwind CSS", "GSAP Layouts", "PostgreSQL", "Booking Engine"],
-      color: "bg-[#FFFFFF] border-[#ECECEC]",
-      url: "https://madhufitness.netlify.app/",
     },
     {
       id: "trinity",
@@ -333,7 +333,7 @@ function ProjectVisual({
     y.set(0);
   };
 
-  const hasImage = ["ideovate", "ksquare", "trinity"].includes(project.id);
+  const hasImage = ["ideovate", "ksquare", "trinity", "apexmarketing"].includes(project.id);
 
   if (hasImage) {
     return (
@@ -348,7 +348,7 @@ function ProjectVisual({
           alt={`${project.name} - ${project.category}`}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
-          priority={project.id === "ideovate"}
+          priority={project.id === "apexmarketing"}
           className={`object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isRowHovered ? 'scale-[1.03]' : 'scale-100'}`}
         />
       </div>
@@ -373,92 +373,116 @@ function ProjectVisual({
         }}
         className="w-full h-full relative"
       >
-        {renderVisualContent(project.id, isRowHovered, px, py)}
+        <RenderVisualContent id={project.id} isHovered={isRowHovered} px={px} py={py} />
       </motion.div>
     </div>
   );
 }
 
-function renderVisualContent(
-  id: string,
-  isHovered: boolean,
-  px: any,
-  py: any
-) {
+function RenderVisualContent({
+  id,
+  isHovered,
+  px,
+  py,
+}: {
+  id: string;
+  isHovered: boolean;
+  px: any;
+  py: any;
+}) {
   const pxStats = useTransform(px, (v: number) => v * 1.5);
   const pyStats = useTransform(py, (v: number) => v * 1.5);
   const bgX = useTransform(px, (v: number) => v * -0.4);
   const bgY = useTransform(py, (v: number) => v * -0.4);
 
-  if (id === "madhufitness") {
+  if (id === "apexmarketing") {
     return (
-      <div className="w-full h-full relative flex flex-col justify-between overflow-hidden bg-[#FAF9F5]">
+      <div className="w-full h-full relative flex flex-col justify-between overflow-hidden bg-[#FAFBFD]">
         {/* Soft elegant warm glow */}
         <motion.div
           style={{ x: bgX, y: bgY }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,#EFEBE4_0%,transparent_60%)]"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,#EEF2FF_0%,transparent_60%)]"
         />
         
         <div className="flex items-center justify-between border-b border-[#ECECEC] p-6 z-10 bg-white/40 backdrop-blur-sm">
-          <span className="text-[9px] font-bold tracking-widest text-[#111111] uppercase font-sans">MADHU // WELLNESS</span>
+          <span className="text-[9px] font-bold tracking-widest text-[#111111] uppercase font-sans">APEX // PERFORMANCE</span>
           <div className="flex gap-2 text-[8px] font-mono text-[#666666]">
-            <span>PLANS: (03)</span>
-            <span className="text-[#111111] font-bold">ACTIVE</span>
+            <span>CAMPAIGNS: (04)</span>
+            <span className="text-[#00E65C] font-bold">ACTIVE</span>
           </div>
         </div>
 
         {/* App mockup layout */}
         <div className="my-auto w-[85%] mx-auto flex items-center justify-between gap-4 py-4 z-10">
-          {/* Booking calendar card */}
-          <div className="border border-[#ECECEC] bg-white rounded-2xl p-4 flex-1 flex flex-col gap-3 shadow-md">
-            <div className="flex items-center gap-2">
-              <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#111111] shrink-0" fill="currentColor">
-                <path d="M12 4.5A2.5 2.5 0 009.5 7V17A2.5 2.5 0 0012 19.5A2.5 2.5 0 0014.5 17V7A2.5 2.5 0 0012 4.5z" />
-              </svg>
-              <span className="text-[7px] font-bold tracking-widest text-[#666666] uppercase">ELITE TRAINING</span>
+          {/* Conversion trend card */}
+          <div className="border border-[#ECECEC] bg-white rounded-2xl p-4 flex-1 flex flex-col gap-2 shadow-md">
+            <div className="flex items-center justify-between">
+              <span className="text-[7px] font-bold tracking-widest text-[#666666] uppercase">CONVERSION FUNNEL</span>
+              <span className="text-[8px] font-mono text-[#00E65C] font-bold">+18.4%</span>
             </div>
             
-            {/* Interactive light-up slots */}
-            <div className="grid grid-cols-2 gap-1.5 pt-1">
-              {["08:00", "10:30", "14:00", "16:30"].map((time, idx) => (
-                <motion.div
-                  key={time}
-                  className={`py-1 text-center rounded-lg border text-[8px] font-bold font-mono transition-colors duration-300 ${
-                    idx === 1
-                      ? "bg-[#00E65C] border-[#00E65C] text-[#111111]"
-                      : "bg-[#F8F8F8] border-[#ECECEC] text-[#666666]"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  animate={idx === 1 ? { scale: isHovered ? [1, 1.04, 1] : 1 } : {}}
+            {/* Custom SVG line chart mockup */}
+            <div className="w-full h-12 relative mt-1">
+              <svg viewBox="0 0 120 40" className="w-full h-full text-[#6366F1]" fill="none">
+                <defs>
+                  <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#6366F1" stopOpacity="0.2" />
+                    <stop offset="100%" stopColor="#6366F1" stopOpacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <motion.path
+                  d="M0 35 Q15 25 30 30 T60 15 T90 20 T120 5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 2, ease: "easeOut" }}
+                />
+                <path
+                  d="M0 35 Q15 25 30 30 T60 15 T90 20 T120 5 L120 40 L0 40 Z"
+                  fill="url(#chartGlow)"
+                />
+                <motion.circle
+                  cx="120"
+                  cy="5"
+                  r="3"
+                  fill="#00E65C"
+                  animate={{ r: isHovered ? [3, 5, 3] : 3 }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                  {time}
-                </motion.div>
-              ))}
+                />
+              </svg>
+            </div>
+
+            <div className="flex items-center justify-between pt-1 border-t border-[#F1F5F9] mt-1">
+              <span className="text-[7px] font-mono text-[#666666]">CTR: 5.8%</span>
+              <span className="text-[7px] font-mono text-[#111111] font-bold">ROAS: 4.8x</span>
             </div>
           </div>
 
-          {/* Floating package ticket */}
+          {/* Floating lead telemetry ticket */}
           <motion.div
             style={{ x: pxStats, y: pyStats }}
-            className="flex flex-col gap-2.5 flex-1 justify-center bg-white border border-[#ECECEC] rounded-2xl p-4 shadow-lg"
+            className="flex flex-col gap-2 flex-1 justify-center bg-white border border-[#ECECEC] rounded-2xl p-4 shadow-lg"
           >
-            <span className="text-[7px] font-bold tracking-widest text-[#666666] uppercase">PREMIUM SESSION</span>
-            <h5 className="text-xs font-black tracking-tight text-[#111111] uppercase leading-none">STRENGTH PASS</h5>
-            <div className="text-sm font-bold text-[#111111]">$240.00</div>
+            <span className="text-[7px] font-bold tracking-widest text-[#666666] uppercase">LEAD ACQUISITION</span>
+            <h5 className="text-xs font-black tracking-tight text-[#111111] uppercase leading-none">TELEMETRY</h5>
+            <div className="text-sm font-extrabold text-[#111111]">
+              4,820 <span className="text-[8px] font-mono text-[#666666] font-normal">/mo</span>
+            </div>
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-[#111111] hover:bg-[#00E65C] hover:text-[#111111] py-1.5 rounded-lg text-[7px] font-bold tracking-widest text-center text-white uppercase transition-colors duration-300 cursor-pointer"
+              className="w-full bg-[#111111] hover:bg-[#6366F1] hover:text-white py-1.5 rounded-lg text-[7px] font-bold tracking-widest text-center text-white uppercase transition-colors duration-300 cursor-pointer"
             >
-              BOOK PASS
+              OPTIMIZE FUNNEL
             </motion.div>
           </motion.div>
         </div>
 
         <div className="flex items-center justify-between p-6 text-[8px] font-mono text-[#666666] z-10 border-t border-[#ECECEC]/50 bg-white/40">
-          <div>LOAD TIME: &lt; 0.6s</div>
-          <div>ONBOARDING: OPTIMIZED</div>
+          <div>LEAD PIPELINE: INSTANT</div>
+          <div>CONVERSION RATE: +24%</div>
         </div>
       </div>
     );
