@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   keywords: ["Vinoth M", "Full Stack Developer", "Digital Product Builder", "Portfolio", "Luxury Web Design", "Next.js Developer", "GSAP Portfolio"],
   authors: [{ name: "Vinoth M" }],
   openGraph: {
-    title: "Vinoth M — Premium Digital Architect & Developer",
+    title: "Vinoth M — AI Software Developer",
     description: "Personal portfolio of Vinoth M, showcasing state-of-the-art web products and exceptional design systems.",
     type: "website",
     url: "https://vinothdeveloper.vercel.app",
